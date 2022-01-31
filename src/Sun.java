@@ -1,5 +1,5 @@
 public class Sun {
     public static void main(String[] agr){
-        System.out.println("Horaaaay!");
+        System.out.println("Horaaaay! Sun!!!!");
     }
 }
