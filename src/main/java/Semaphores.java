@@ -4,12 +4,12 @@ import java.util.concurrent.Semaphore;
 
 public class Semaphores {
 //    public static void main(String[] args) throws InterruptedException {
-//        Semaphore semaphore = new Semaphore(0);
+//        Semaphore semaphore = new Semaphore(0); //Создается семафор с начальным и максимальном значении счетчика = 0, т.е. максимум потоков к ресурсу
 //        Runnable task = () -> {
 //            try {
-//                semaphore.acquire();
+//                semaphore.acquire(); //Метод, для получения разрешения у семафора. В (int permits) можно указать кол-ва потоков.
 //                System.out.println("Finished");
-//                semaphore.release();
+//                semaphore.release(); //Освобождение от разрешения
 //            } catch (InterruptedException e) {
 //                e.printStackTrace();
 //            }
@@ -22,7 +22,7 @@ public class Semaphores {
 
     static class Philosopher extends Thread {
 
-        private Semaphore sem;
+        private Semaphore sem; //Только в этом классе переменная
 
         // поел ли философ
         private boolean full = false;
@@ -30,9 +30,18 @@ public class Semaphores {
         private String name;
 
         Philosopher(Semaphore sem, String name) {
-            this.sem=sem;
+            this.sem=sem;   //this - текущий экземпляр этого класса
             this.name=name;
         }
+
+        public Semaphore getSem() {
+            return sem;
+        }
+
+        public void setSem(Semaphore sem) {
+            this.sem = sem;
+        }
+
 
         public void run()
         {
@@ -50,8 +59,8 @@ public class Semaphores {
 
                     System.out.println (name + " поел! Он выходит из-за стола");
                     sem.release();
-
                     // философ ушел, освободив место другим
+
                     sleep(300);
                 }
             }

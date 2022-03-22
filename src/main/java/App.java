@@ -18,7 +18,7 @@ public class App{
 //        new Thread(task).start();
 //    }
 
-    public static volatile boolean flag = false;
+    public static volatile boolean flag = false;  //Делаем что хотим?
 
     public static void main(String[] args) throws InterruptedException {
         Runnable whileFlagFalse = () -> {

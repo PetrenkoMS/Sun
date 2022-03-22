@@ -1,1 +1,5 @@
-Why it's a Bug? It's not a Bug! It's new Case from Dota 2!
+1) Sun
+2) HelloWorldApp
+3) Lock1 -- readlock? getOwner()?
+4) Semaphore -- this/super()
+5) Pool -- SynchronousQueue().  Почему не выводит?
