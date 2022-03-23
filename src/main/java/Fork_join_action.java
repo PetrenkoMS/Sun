@@ -6,8 +6,10 @@ import java.util.concurrent.RecursiveAction;
 import java.util.concurrent.RecursiveTask;
 import java.util.concurrent.ThreadLocalRandom;
 
+//Action - вместо fork/join/invoke можно написать invokeAll
+
 public class Fork_join_action {
-    public static final int ARRAY_LENGTH = 50;
+    public static final int ARRAY_LENGTH = 20; //Массив
 
     public static void main(String[] args) {
         ForkJoinPool pool = new ForkJoinPool();
@@ -15,9 +17,9 @@ public class Fork_join_action {
         for (int i = 0; i < ARRAY_LENGTH; i++) {
             strings[i] = createRandomString();
         }
-        printStringTable(strings);
-        UpperCaseAction action = new UpperCaseAction(strings);
-        pool.invoke(action);
+        printStringTable(strings); //Выводит построчно
+        UpperCaseAction action = new UpperCaseAction(strings); //Описана ниже
+        pool.invoke(action); //объединение (вызов)
         printStringTable(strings);
     }
 
@@ -43,14 +45,13 @@ public class Fork_join_action {
 }
 
 class UpperCaseAction extends RecursiveAction {
-    private static final long serialVersionUID = 1L;
     private String [] strings;
     private int start;
     private int end;
     private int size;
 
     public UpperCaseAction(String[] strings, int start, int end) {
-        super();
+        //super();
         this.strings = strings;
         this.start = start;
         this.end = end;
